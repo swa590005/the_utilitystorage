@@ -13,9 +13,7 @@ class MainController extends AbstractController
      */
     public function index()
     {
-        return $this->render('home/homepage.html.twig', [
-            
-            ]);
+        return $this->render('home/homepage.html.twig', []);
     }
     /**
      * @Route("/eletricDetails", name="electric_list")
