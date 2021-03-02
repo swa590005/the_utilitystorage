@@ -17,4 +17,20 @@ class MainController extends AbstractController
             
             ]);
     }
+    /**
+     * @Route("/eletricDetails", name="electric_list")
+     */
+    public function showElectricList()
+    {
+            
+            return $this->render('home/show_meter_readinglist.html.twig',[]);
+    }
+    /**
+     * @Route("/heaterDetails", name="heater_list")
+     */
+    public function showHeaterList()
+    {
+            
+            return $this->render('home/show_heizung_readinglist.html.twig',[]);
+    }
 }

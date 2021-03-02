@@ -1,22 +1,12 @@
 {% extends 'content_base.html.twig' %}
 
 {% block content_body %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>SI.No</th>
-                <th>Meter</th>
-                <th>Heizung</th>
-            </tr>
-        </thead>
-        <tbody>
-        
-                <tr>
-                    <td>1</td>
-                    <td>View Meter Reading Details</td>
-                    <td>View Heizung Reading Details</td>
-                </tr>
-           
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="{{ path('electric_list') }}"> View Electric </a>
+        </div>
+        <div class="col-sm-12">
+            <a href="{{ path('heater_list') }}"> View Heater </a>
+        </div>
+    </div>
 {% endblock %}
