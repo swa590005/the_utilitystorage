@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+           
+            <title>{% block title %}News Administration!{% endblock %}</title>
+
+
         {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
+            <!-- Bootstrap -->
+           <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="col-lg-10">
+            <a class="navbar-brand" href="#" style="color:#fff;">News Administration</a>
+        </div>
+        <div class="col-lg-2" style="margin-top:8px">
+            <div class="btn-group">            
+            <a  href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+            aria-expanded="false">
+            Settings
+            <span class="caret"></span>
+        </a> 
+        <ul class="dropdown-menu p-3">
+                <li ><a href="../views/login.php">Login</a></li>
+                <li ><a href="../views/logout.php">Logout</a></li>
+                <li ><a href="../index.php">Register</a></li>
+        </ul>
+            </div>
+        </div>
+  
+    </nav>
         {% block body %}{% endblock %}
+        
+        {% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        {% endblock %}
     </body>
 </html>
