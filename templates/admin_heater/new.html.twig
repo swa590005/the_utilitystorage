@@ -1,0 +1,41 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <h1>Create a new HeaterData! </h1>
+    {{ form_start(heaterForm) }}
+        {{ form_widget(heaterForm) }}
+        <button type="submit" class="btn btn-primary">Create!</button>
+    {{ form_end(heaterForm) }}
+
+    
+    <h2 class="overview-headline">All Available Heater</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SI.No</th>
+                <th>Room Name</th>
+                <th>Heater No</th>
+                <th>Actions<th>
+            </tr>
+        </thead>
+        <tbody>
+                <td>1</td>
+                <td>some data</td>
+                <td>some data</td>
+                <td>
+                <button>
+                  <a href="" style="color:green">
+                    Edit
+                  </a>
+                </button>
+                <button>
+                  <a href="" style="color:red">  
+                    Delete
+                  </a>
+                </button>
+            </td>
+            
+        </tbody>
+    </table>
+
+{% endblock %}
