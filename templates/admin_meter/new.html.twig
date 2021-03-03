@@ -1,0 +1,10 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <h1>Create a new MeterData! </h1>
+    {{ form_start(meterForm) }}
+        {{ form_widget(meterForm) }}
+        <button type="submit" class="btn btn-primary">Create!</button>
+        <a href="{{ path('admin_meter') }}"><p class="text-center"><i class="fa fa-undo"></i> Back to List</p></a>
+    {{ form_end(meterForm) }}
+{% endblock %}
