@@ -5,6 +5,34 @@
     {{ form_start(roomForm) }}
         {{ form_widget(roomForm) }}
         <button type="submit" class="btn btn-primary">Create!</button>
-        <a href="{{ path('admin_room') }}"><p class="text-center"><i class="fa fa-undo"></i> Back to List</p></a>
     {{ form_end(roomForm) }}
+
+    
+    <h2 class="overview-headline">All Available Room</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>SI.No</th>
+                <th>Room Name</th>
+                <th>Actions<th>
+            </tr>
+        </thead>
+        <tbody>
+                <td>1</td>
+                <td>some data</td>
+                <td>
+                <button>
+                  <a href="" style="color:green">
+                    Edit
+                  </a>
+                </button>
+                <button>
+                  <a href="" style="color:red">  
+                    Delete
+                  </a>
+                </button>
+            </td>
+            
+        </tbody>
+    </table>
 {% endblock %}

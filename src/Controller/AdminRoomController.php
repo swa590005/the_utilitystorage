@@ -9,13 +9,7 @@ use App\Form\RoomFormType;
 
 class AdminRoomController extends AbstractController
 {
-    /**
-     * @Route("/admin/room", name="admin_room")
-     */
-    public function index(): Response
-    {
-        return $this->render('admin_room/index.html.twig', []);
-    }
+    
     /**
      * @Route("/admin/room/new", name="admin_room_new")
      */
