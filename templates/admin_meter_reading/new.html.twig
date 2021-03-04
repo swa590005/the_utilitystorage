@@ -1,0 +1,48 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <h1>Create a new Meter Reading Data! </h1>
+    {{ form_start(meterReadingForm) }}
+
+    {{ form_row(meterReadingForm.meter_number)}}
+    {{ form_row(meterReadingForm.reading_date) }}
+    {{ form_row(meterReadingForm.meter_reading) }}
+
+
+
+    <button type="submit" class="btn btn-primary">Create!</button>
+    {{ form_end(meterReadingForm) }}
+
+
+    <h2 class="overview-headline">All Available Meter Reading Data</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SI.No</th>
+            <th>Meter Number</th>
+            <th>Date</th>
+            <th>Reading</th>
+            <th>Actions<th>
+        </tr>
+        </thead>
+        <tbody>
+        <td>1</td>
+        <td>some data</td>
+        <td>some data</td>
+        <td>some data</td>
+        <td>
+            <button>
+                <a href="" style="color:green">
+                    Edit
+                </a>
+            </button>
+            <button>
+                <a href="" style="color:red">
+                    Delete
+                </a>
+            </button>
+        </td>
+
+        </tbody>
+    </table>
+{% endblock %}
