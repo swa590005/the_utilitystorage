@@ -1,0 +1,51 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <h1>Create a new Heater Reading Data! </h1>
+    {{ form_start(heaterReadingForm) }}
+
+    {{ form_row(heaterReadingForm.room_name) }}
+    {{ form_row(heaterReadingForm.heater_number) }}
+    {{ form_row(heaterReadingForm.reading_date) }}
+    {{ form_row(heaterReadingForm.heater_reading) }}
+
+
+
+    <button type="submit" class="btn btn-primary">Create!</button>
+    {{ form_end(heaterReadingForm) }}
+
+
+    <h2 class="overview-headline">All Available Heater Reading Data</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SI.No</th>
+            <th>Room Name</th>
+            <th>Heater Number</th>
+            <th>Date</th>
+            <th>Reading</th>
+            <th>Actions<th>
+        </tr>
+        </thead>
+        <tbody>
+        <td>1</td>
+        <td>some data</td>
+        <td>some data</td>
+        <td>some data</td>
+        <td>some data</td>
+        <td>
+            <button>
+                <a href="" style="color:green">
+                    Edit
+                </a>
+            </button>
+            <button>
+                <a href="" style="color:red">
+                    Delete
+                </a>
+            </button>
+        </td>
+
+        </tbody>
+    </table>
+{% endblock %}
