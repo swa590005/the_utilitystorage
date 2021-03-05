@@ -37,6 +37,16 @@
         </div>
   
     </nav>
+
+        {# display any flash message #}
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} alert-dismissible fade show">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         {% block body %}{% endblock %}
         
         {% block javascripts %}

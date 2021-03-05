@@ -1,0 +1,43 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-sm-12 pt-3">
+            <div>
+                <a href="{{ path('admin_meter_new') }}" class="btn btn-primary">Add New Record</a>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="overview-headline">All Available Meter</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SI.No</th>
+            <th>Meter No</th>
+            <th>Actions<th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for meter in meters %}
+            <tr>
+                <td>1</td>
+                <td>{{ meter.meterNumber }}</td>
+                <td>
+                    <button>
+                        <a href="" style="color:green">
+                            Edit
+                        </a>
+                    </button>
+                    <button>
+                        <a href="" style="color:red">
+                            Delete
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

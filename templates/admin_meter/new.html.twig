@@ -3,37 +3,7 @@
 {% block content_body %}
     <h1>Create a new MeterData! </h1>
     {{ form_start(meterForm) }}
-        {{ form_widget(meterForm) }}
+    {{ form_row(meterForm.meter_number) }}
         <button type="submit" class="btn btn-primary">Create!</button>
     {{ form_end(meterForm) }}
-
-    
-    <h2 class="overview-headline">All Available Meter</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>SI.No</th>
-                <th>Meter No</th>
-                <th>Actions<th>
-            </tr>
-        </thead>
-        <tbody>
-                <td>1</td>
-                <td>some data</td>
-                <td>
-                <button>
-                  <a href="" style="color:green">
-                    Edit
-                  </a>
-                </button>
-                <button>
-                  <a href="" style="color:red">  
-                    Delete
-                  </a>
-                </button>
-            </td>
-            
-        </tbody>
-    </table>
-
 {% endblock %}
