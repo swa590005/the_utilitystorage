@@ -8,8 +8,11 @@
             </div>
         </div>
     </div>
-
+    {% if meters  %}
     <h2 class="overview-headline">All Available Meter</h2>
+    {% else %}
+        <h2 class="overview-headline">No Meter Added</h2>
+    {% endif %}
     <table class="table">
         <thead>
         <tr>
@@ -18,26 +21,32 @@
             <th>Actions<th>
         </tr>
         </thead>
+
         <tbody>
-        {% for meter in meters %}
-            <tr>
-                <td>1</td>
-                <td>{{ meter.meterNumber }}</td>
-                <td>
-                    <button>
-                        <a href="" style="color:green">
-                            Edit
-                        </a>
-                    </button>
-                    <button>
-                        <a href="" style="color:red">
-                            Delete
-                        </a>
-                    </button>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for meter in meters %}
+                <tr>
+                    <td>1</td>
+                    <td>{{ meter.meterNumber }}</td>
+                    <td>
+                        <button>
+                            <a href="{{ path('admin_meter_edit',{
+                                id:meter.id
+                            }) }}" style="color:green">
+                                Edit
+                            </a>
+                        </button>
+                        <button>
+                            <a href="{{ path('admin_meter_delete',{
+                                id:meter.id
+                            }) }}" style="color:red">
+                                Delete
+                            </a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
+
     </table>
 
 {% endblock %}
