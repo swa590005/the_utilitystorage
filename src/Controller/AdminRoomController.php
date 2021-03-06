@@ -66,10 +66,13 @@ class AdminRoomController extends AbstractController
     /**
      * @Route("/admin/room/{id}/delete", name="admin_room_delete")
      */
-    public function delete(Room $room, EntityManagerInterface $em)
+    public function delete(RoomRepository $roomRepository, EntityManagerInterface $em, $id)
     {
-        $em->remove($room);
+        $room=$roomRepository->find($id);
+        $room->setIsDeleted(true);
+        $em->persist($room);
         $em->flush();
+
         return $this->redirectToRoute('admin_room_list');
     }
 
@@ -78,7 +81,7 @@ class AdminRoomController extends AbstractController
      */
     public function list(RoomRepository $roomRepository): Response
     {
-        $rooms=$roomRepository->findAll();
+        $rooms=$roomRepository->findAllNonDeletedRoom();
         return $this->render('admin_room/list.html.twig',[
             'rooms'=>$rooms,
         ]);

@@ -21,4 +21,15 @@ class AdminHeaterController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/admin/heater", name="admin_heater_list")
+     */
+    public function list(): Response
+    {
+
+        return $this->render('admin_heater/list.html.twig',[
+
+        ]);
+    }
+
 }

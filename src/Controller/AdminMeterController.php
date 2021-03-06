@@ -67,10 +67,13 @@ class AdminMeterController extends AbstractController
     /**
      * @Route("/admin/meter/{id}/delete", name="admin_meter_delete")
      */
-    public function delete(Meter $meter, EntityManagerInterface $em)
+    public function delete(MeterRepository $meterRepository, EntityManagerInterface $em, $id)
     {
-        $em->remove($meter);
+        $meter=$meterRepository->find($id);
+        $meter->setIsDeleted(true);
+        $em->persist($meter);
         $em->flush();
+
         return $this->redirectToRoute('admin_meter_list');
     }
 
@@ -79,7 +82,7 @@ class AdminMeterController extends AbstractController
      */
     public function list(MeterRepository $meterRepository): Response
     {
-        $meters=$meterRepository->findAll();
+        $meters=$meterRepository->findAllNonDeletedMeter();
         return $this->render('admin_meter/list.html.twig',[
             'meters'=>$meters,
         ]);
