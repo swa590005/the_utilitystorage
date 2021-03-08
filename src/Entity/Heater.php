@@ -35,7 +35,10 @@ class Heater
      */
     private $room;
 
-
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getHeaterNumber(): ?string
     {

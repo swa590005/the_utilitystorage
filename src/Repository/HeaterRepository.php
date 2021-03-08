@@ -19,22 +19,21 @@ class HeaterRepository extends ServiceEntityRepository
         parent::__construct($registry, Heater::class);
     }
 
-    // /**
-    //  * @return Heater[] Returns an array of Heater objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Heater[] Returns an array of Heater objects
+     */
+
+    public function findAllNonDeletedHeater()
     {
         return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('h.isDeleted = :val')
+            ->setParameter('val', false)
             ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Heater
