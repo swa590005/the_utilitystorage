@@ -8,7 +8,11 @@
             </div>
         </div>
     </div>
-    <h2 class="overview-headline">All Available Yearly Heater Data</h2>
+    {% if yearHeaterReadings  %}
+        <h2 class="overview-headline">All Available Yearly Heater Reading</h2>
+    {% else %}
+        <h2 class="overview-headline">No Heater Reading Added</h2>
+    {% endif %}
     <table class="table">
         <thead>
         <tr>
@@ -21,24 +25,31 @@
         </tr>
         </thead>
         <tbody>
-        <td>1</td>
-        <td>some data</td>
-        <td>some data</td>
-        <td>some data</td>
-        <td>some data</td>
-        <td>
-            <button>
-                <a href="" style="color:green">
-                    Edit
-                </a>
-            </button>
-            <button>
-                <a href="" style="color:red">
-                    Delete
-                </a>
-            </button>
-        </td>
-
+        {% for heaterReading in yearHeaterReadings %}
+        <tr>
+            <td>1</td>
+            <td>{{ heaterReading.heater.room }}</td>
+            <td>{{ heaterReading.heater }}</td>
+            <td>{{ heaterReading.readingDate|date('Y') }}</td>
+            <td>{{ heaterReading.heaterReading }}</td>
+            <td>
+                <button>
+                    <a href="{{ path('admin_year_heater_edit',{
+                        id:heaterReading.id
+                    })}}" style="color:green">
+                        Edit
+                    </a>
+                </button>
+                <button>
+                    <a href="{{ path('admin_year_heater_delete',{
+                        id:heaterReading.id
+                    })}}" style="color:red">
+                        Delete
+                    </a>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
         </tbody>
     </table>
 {% endblock %}
