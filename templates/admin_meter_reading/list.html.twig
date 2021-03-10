@@ -1,0 +1,53 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-sm-12 pt-3">
+            <div>
+                <a href="{{ path('admin_meter_reading') }}" class="btn btn-primary">Add New Record</a>
+            </div>
+        </div>
+    </div>
+    {% if meterReadings  %}
+        <h2 class="overview-headline">All Available Meter Reading</h2>
+    {% else %}
+        <h2 class="overview-headline">No Reading Added</h2>
+    {% endif %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SI.No</th>
+            <th>Meter Number</th>
+            <th>Date</th>
+            <th>Reading</th>
+            <th>Actions<th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for meterReading in meterReadings %}
+        <tr>
+            <td>1</td>
+            <td>{{ meterReading.meter }}</td>
+            <td>{{ meterReading.readingDate|date('m-d-Y') }}</td>
+            <td>{{ meterReading.meterReading }}</td>
+            <td>
+                <button>
+                    <a href="{{ path('admin_meter_reading_edit',{
+                        id:meterReading.id
+                    }) }}" style="color:green">
+                        Edit
+                    </a>
+                </button>
+                <button>
+                    <a href="{{ path('admin_meter_reading_delete',{
+                        id:meterReading.id
+                    }) }}" style="color:red">
+                        Delete
+                    </a>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
