@@ -26,12 +26,17 @@ class HeaterRepository extends ServiceEntityRepository
     public function findAllNonDeletedHeater()
     {
         return $this->createQueryBuilder('h')
+            ->innerJoin('h.room', 'r')
+            ->addSelect('r')
             ->andWhere('h.isDeleted = :val')
             ->setParameter('val', false)
             ->orderBy('h.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;
+
+
+
     }
 
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+
 use App\Form\YearHeaterFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,13 +13,24 @@ class AdminYearHeaterController extends AbstractController
 {
 
     /**
-     * @Route("/admin/year/heater", name="admin_year_heater")
+     * @Route("/admin/year/heater/new", name="admin_year_heater")
      */
     public function new(): Response
     {
         $form = $this->createForm(YearHeaterFormType::class);
         return $this->render('admin_year_heater/new.html.twig', [
             'yearHeaterForm' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/admin/year/heater", name="admin_year_heater_list")
+     */
+    public function list(): Response
+    {
+
+        return $this->render('admin_year_heater/list.html.twig',[
+
         ]);
     }
 }

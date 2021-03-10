@@ -32,7 +32,8 @@ class Room
     private $isDeleted =false;
 
     /**
-     * @ORM\OneToMany(targetEntity=Heater::class, mappedBy="room")
+     * @ORM\OneToMany(targetEntity="App\Entity\Heater", mappedBy="room")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $heaters;
 

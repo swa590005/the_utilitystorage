@@ -1,53 +1,8 @@
 {% extends 'content_base.html.twig' %}
 
 {% block content_body %}
-    <h1>Create a new Yearly Heater Data! </h1>
-    {{ form_start(yearHeaterForm) }}
-
-    {{ form_row(yearHeaterForm.room_name, {
-        label: 'Room Name'
+    <h1>Create a new Yearly Heater Reading ! </h1>
+    {{ include('admin_year_heater/_form.html.twig',{
+        button_text:'Create!'
     }) }}
-    {{ form_row(yearHeaterForm.heater_number) }}
-    {{ form_row(yearHeaterForm.previous_year) }}
-    {{ form_row(yearHeaterForm.heater_reading) }}
-
-
-
-    <button type="submit" class="btn btn-primary">Create!</button>
-    {{ form_end(yearHeaterForm) }}
-
-
-    <h2 class="overview-headline">All Available Yearly Heater Data</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>SI.No</th>
-            <th>Room Name</th>
-            <th>Heater Number</th>
-            <th>Year</th>
-            <th>Reading</th>
-            <th>Actions<th>
-        </tr>
-        </thead>
-        <tbody>
-                <td>1</td>
-                <td>some data</td>
-                <td>some data</td>
-                <td>some data</td>
-                <td>some data</td>
-                <td>
-                    <button>
-                        <a href="" style="color:green">
-                            Edit
-                        </a>
-                    </button>
-                    <button>
-                        <a href="" style="color:red">
-                            Delete
-                        </a>
-                    </button>
-                </td>
-
-        </tbody>
-    </table>
 {% endblock %}

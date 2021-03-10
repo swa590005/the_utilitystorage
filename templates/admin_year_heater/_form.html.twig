@@ -1,0 +1,14 @@
+{{ form_start(yearHeaterForm) }}
+
+
+    {{ form_row(yearHeaterForm.heater_number, {
+        label: 'Heater Number'
+    })  }}
+    {{ form_widget(yearHeaterForm.previous_year['day'],{'attr':{'style':'display:none'}}) }}
+    {{ form_widget(yearHeaterForm.previous_year['month'],{'attr':{'style':'display:none'}}) }}
+    {{ form_widget(yearHeaterForm.previous_year['year']) }}
+    {{ form_row(yearHeaterForm.heater_reading) }}
+<button type="submit" class="btn btn-primary">{{ button_text }}</button>
+{{ form_end(yearHeaterForm)
+
+}}
