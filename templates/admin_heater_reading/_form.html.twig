@@ -1,0 +1,12 @@
+{{ form_start(heaterReadingForm) }}
+
+
+    {{ form_row(heaterReadingForm.heater, {
+        label: 'Heater Number'
+    })  }}
+    {{ form_widget(heaterReadingForm.readingDate) }}
+    {{ form_row(heaterReadingForm.heater_reading) }}
+<button type="submit" class="btn btn-primary">{{ button_text }}</button>
+{{ form_end(heaterReadingForm)
+
+}}

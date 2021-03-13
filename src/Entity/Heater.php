@@ -42,9 +42,15 @@ class Heater
      */
     private $yearHeaterReadings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=HeaterReading::class, mappedBy="heater")
+     */
+    private $heaterReadings;
+
     public function __construct()
     {
         $this->yearHeaterReadings = new ArrayCollection();
+        $this->heaterReadings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -121,6 +127,36 @@ class Heater
     public function __toString(): string
     {
         return $this->getHeaterNumber();
+    }
+
+    /**
+     * @return Collection|HeaterReading[]
+     */
+    public function getHeaterReadings(): Collection
+    {
+        return $this->heaterReadings;
+    }
+
+    public function addHeaterReading(HeaterReading $heaterReading): self
+    {
+        if (!$this->heaterReadings->contains($heaterReading)) {
+            $this->heaterReadings[] = $heaterReading;
+            $heaterReading->setHeater($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHeaterReading(HeaterReading $heaterReading): self
+    {
+        if ($this->heaterReadings->removeElement($heaterReading)) {
+            // set the owning side to null (unless already changed)
+            if ($heaterReading->getHeater() === $this) {
+                $heaterReading->setHeater(null);
+            }
+        }
+
+        return $this;
     }
 
 }

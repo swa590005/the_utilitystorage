@@ -1,0 +1,55 @@
+{% extends 'content_base.html.twig' %}
+
+{% block content_body %}
+    <div class="row">
+        <div class="col-sm-12 pt-3">
+            <div>
+                <a href="{{ path('admin_heater_reading') }}" class="btn btn-primary">Add New Record</a>
+            </div>
+        </div>
+    </div>
+    {% if heaterReadings  %}
+        <h2 class="overview-headline">All Available Heater Reading</h2>
+    {% else %}
+        <h2 class="overview-headline">No Heater Reading Added</h2>
+    {% endif %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>SI.No</th>
+            <th>Room Name</th>
+            <th>Heater Number</th>
+            <th>Date of Reading</th>
+            <th>Reading</th>
+            <th>Actions<th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for heaterReading in heaterReadings %}
+        <tr>
+            <td>1</td>
+            <td>{{ heaterReading.heater.room }}</td>
+            <td>{{ heaterReading.heater }}</td>
+            <td>{{ heaterReading.readingDate|date('Y') }}</td>
+            <td>{{ heaterReading.heaterReading }}</td>
+            <td>
+                <button>
+                    <a href="{{ path('admin_heater_reading_edit',{
+                        id:heaterReading.id
+                    })}}" style="color:green">
+                        Edit
+                    </a>
+                </button>
+                <button>
+                    <a href="{{ path('admin_heater_reading_delete',{
+                        id:heaterReading.id
+                    })}}" style="color:red">
+                        Delete
+                    </a>
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
