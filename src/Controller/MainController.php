@@ -18,7 +18,7 @@ class MainController extends AbstractController
     /**
      * @Route("/eletricDetails", name="electric_list")
      */
-    public function showElectricList()
+    public function showElectricList(): Response
     {
             
             return $this->render('home/show_meter_readinglist.html.twig',[]);
@@ -26,7 +26,7 @@ class MainController extends AbstractController
     /**
      * @Route("/heaterDetails", name="heater_list")
      */
-    public function showHeaterList()
+    public function showHeaterList(): Response
     {
             
             return $this->render('home/show_heizung_readinglist.html.twig',[]);
