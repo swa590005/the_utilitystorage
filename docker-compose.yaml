@@ -8,4 +8,4 @@ services:
             MYSQL_ROOT_PASSWORD: "swati"
             MYSQL_DATABASE: utilitystorage_db
         ports:
-            - 3306:3306
+            - 3307:3306

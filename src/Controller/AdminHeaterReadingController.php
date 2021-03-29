@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminHeaterReadingController extends AbstractController
 {
     /**
-     * @Route("/admin/heater/reading", name="admin_heater_reading")
+     * @Route("/admin/heater/reading/new", name="admin_heater_reading")
      */
     public function new(EntityManagerInterface $em, Request $request): Response
     {
@@ -77,7 +77,7 @@ class AdminHeaterReadingController extends AbstractController
     }
 
     /**
-     * @Route("/admin/year/heater", name="admin_heater_reading_list")
+     * @Route("/admin/heater/reading", name="admin_heater_reading_list")
      */
     public function list(HeaterReadingRepository $heaterReadingRepository): Response
     {
