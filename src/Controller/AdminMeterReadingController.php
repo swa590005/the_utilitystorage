@@ -6,15 +6,19 @@ use App\Entity\MeterReading;
 use App\Form\MeterReadingFormType;
 use App\Repository\MeterReadingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted("ROLE_USER")
+ */
 class AdminMeterReadingController extends AbstractController
 {
     /**
-     * @Route("/admin/meter/reading/new", name="admin_meter_reading")
+     * @Route("/meter/reading/new", name="app_meter_reading")
      */
     public function new(EntityManagerInterface $em, Request $request): Response
     {
@@ -28,7 +32,7 @@ class AdminMeterReadingController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Entry Created!');
 
-            return $this->redirectToRoute('admin_meter_reading_list');
+            return $this->redirectToRoute('app_meter_reading_list');
 
         }
         return $this->render('admin_meter_reading/new.html.twig', [
@@ -37,7 +41,7 @@ class AdminMeterReadingController extends AbstractController
     }
 
     /**
-     * @Route("/admin/meter/reading/{id}/edit", name="admin_meter_reading_edit")
+     * @Route("/meter/reading/{id}/edit", name="app_meter_reading_edit")
      */
     public function edit(MeterReading $meterReading, EntityManagerInterface $em, Request $request): Response
     {
@@ -54,7 +58,7 @@ class AdminMeterReadingController extends AbstractController
             $this->addFlash('success', 'Entry Updated!');
 
 
-            return $this->redirectToRoute('admin_meter_reading_list');
+            return $this->redirectToRoute('app_meter_reading_list');
 
         }
         return $this->render('admin_meter_reading/edit.html.twig', [
@@ -63,7 +67,9 @@ class AdminMeterReadingController extends AbstractController
     }
 
     /**
-     * @Route("/admin/meter/reading/{id}/delete", name="admin_meter_reading_delete")
+     * @Route("/meter/reading/{id}/delete", name="app_meter_reading_delete")
+     * @IsGranted ("ROLE_ADMIN")
+     *
      */
     public function delete(MeterReadingRepository $meterReadingRepository, EntityManagerInterface $em, $id): Response
     {
@@ -72,11 +78,11 @@ class AdminMeterReadingController extends AbstractController
         $em->persist($meterReading);
         $em->flush();
         $this->addFlash('success', 'Entry Removed!');
-        return $this->redirectToRoute('admin_meter_reading_list');
+        return $this->redirectToRoute('app_meter_reading_list');
     }
 
     /**
-     * @Route("/admin/meter/reading", name="admin_meter_reading_list")
+     * @Route("/meter/reading", name="app_meter_reading_list")
      */
     public function list(MeterReadingRepository $meterReadingRepository): Response
     {

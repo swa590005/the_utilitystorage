@@ -6,15 +6,20 @@ use App\Entity\HeaterReading;
 use App\Form\HeaterReadingFormType;
 use App\Repository\HeaterReadingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @IsGranted ("ROLE_USER")
+ */
+
 class AdminHeaterReadingController extends AbstractController
 {
     /**
-     * @Route("/admin/heater/reading/new", name="admin_heater_reading")
+     * @Route("/heater/reading/new", name="app_heater_reading")
      */
     public function new(EntityManagerInterface $em, Request $request): Response
     {
@@ -29,7 +34,7 @@ class AdminHeaterReadingController extends AbstractController
             $em->flush();
             $this->addFlash('success', 'Entry Created!');
 
-            return $this->redirectToRoute('admin_heater_reading_list');
+            return $this->redirectToRoute('app_heater_reading_list');
 
         }
         return $this->render('admin_heater_reading/new.html.twig', [
@@ -38,7 +43,7 @@ class AdminHeaterReadingController extends AbstractController
     }
 
     /**
-     * @Route("/admin/heater/reading/{id}/edit", name="admin_heater_reading_edit")
+     * @Route("/heater/reading/{id}/edit", name="app_heater_reading_edit")
      */
     public function edit(HeaterReading $heaterReading, EntityManagerInterface $em, Request $request): Response
     {
@@ -55,7 +60,7 @@ class AdminHeaterReadingController extends AbstractController
             $this->addFlash('success', 'Entry Updated!');
 
 
-            return $this->redirectToRoute('admin_heater_reading_list');
+            return $this->redirectToRoute('app_heater_reading_list');
 
         }
         return $this->render('admin_heater_reading/edit.html.twig', [
@@ -64,7 +69,8 @@ class AdminHeaterReadingController extends AbstractController
     }
 
     /**
-     * @Route("/admin/heater/reading/{id}/delete", name="admin_heater_reading_delete")
+     * @Route("/heater/reading/{id}/delete", name="app_heater_reading_delete")
+     * @IsGranted ("ROLE_ADMIN")
      */
     public function delete(HeaterReadingRepository $heaterReadingRepository, EntityManagerInterface $em, $id): Response
     {
@@ -73,11 +79,11 @@ class AdminHeaterReadingController extends AbstractController
         $em->persist($heaterReading);
         $em->flush();
         $this->addFlash('success', 'Entry Removed!');
-        return $this->redirectToRoute('admin_heater_reading_list');
+        return $this->redirectToRoute('app_heater_reading_list');
     }
 
     /**
-     * @Route("/admin/heater/reading", name="admin_heater_reading_list")
+     * @Route("/heater/reading", name="app_heater_reading_list")
      */
     public function list(HeaterReadingRepository $heaterReadingRepository): Response
     {

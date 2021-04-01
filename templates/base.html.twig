@@ -21,7 +21,7 @@
         <div class="col-lg-10">
             <a class="navbar-brand" href="#" style="color:#fff;">Utility Storage</a>
         </div>
-            {#
+
                 <div class="col-lg-2" style="margin-top:8px">
                     <div class="btn-group">
                          <a  href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
@@ -30,32 +30,28 @@
                                 <span class="caret"></span>
                          </a>
                         <ul class="dropdown-menu p-3">
-                                <li ><a href="../views/login.php">Login</a></li>
-                                <li ><a href="../views/logout.php">Logout</a></li>
-                                <li ><a href="../index.php">Register</a></li>
+                            {% if is_granted('ROLE_USER') %}
+                                <li >
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="dropdown-item" href="{{ path('admin_meter_list') }}">Create Meter</a>
+                                        <a class="dropdown-item" href="{{ path('admin_room_list') }}">Create Room</a>
+                                        <a class="dropdown-item" href="{{ path('admin_heater_list') }}">Create Heater</a>
+                                        <a class="dropdown-item" href="{{ path('admin_year_heater_list') }}">Create Year Heater Reading</a>
+                                    {% endif %}
+                                        <a class="dropdown-item" href="{{ path('app_meter_reading_list') }}">Create Meter Reading</a>
+                                        <a class="dropdown-item" href="{{ path('app_heater_reading_list') }}">Create Heater Reading</a>
+                                        <a class="dropdown-item" href="{{ path('app_logout') }}">Logout</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_login') }}">Login</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
-            #}
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a style="color: #fff;" class="nav-link" href="{{ path('app_login') }}">Login</a>
-                    </li>
-                    {#
-                    <li class="nav-item dropdown" style="margin-right: 75px;">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <img class="nav-profile-img rounded-circle" src="{{ asset('images/astronaut-profile.png') }}">
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Profile</a>
-                            <a class="dropdown-item" href="#">Create Post</a>
-                            <a class="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </li>
-                    #}
-                </ul>
-            </div>
+
+
 
     </nav>
 

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12 pt-3">
             <div>
-                <a href="{{ path('admin_heater_reading') }}" class="btn btn-primary">Add New Record</a>
+                <a href="{{ path('app_heater_reading') }}" class="btn btn-primary">Add New Record</a>
             </div>
         </div>
     </div>
@@ -34,19 +34,21 @@
             <td>{{ heaterReading.heaterReading }}</td>
             <td>
                 <button>
-                    <a href="{{ path('admin_heater_reading_edit',{
+                    <a href="{{ path('app_heater_reading_edit',{
                         id:heaterReading.id
                     })}}" style="color:green">
                         Edit
                     </a>
                 </button>
-                <button>
-                    <a href="{{ path('admin_heater_reading_delete',{
-                        id:heaterReading.id
-                    })}}" style="color:red">
-                        Delete
-                    </a>
-                </button>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <button>
+                        <a href="{{ path('app_heater_reading_delete',{
+                            id:heaterReading.id
+                        })}}" style="color:red">
+                            Delete
+                        </a>
+                    </button>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}
